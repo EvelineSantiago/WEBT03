@@ -1,0 +1,25 @@
+Usando o conceito de contextos permite que os dados sejam compartilhados de forma eficiente, sem a necessidade de passar via props.
+
+
+import React, { createContext, useState } from 'react';
+import TaskList from './TaskList';
+
+const TaskContext = createContext();
+
+const App = () => {
+  const [tasks, setTasks] = useState([
+    { id: 1, text: 'Fazer compras' },
+    { id: 2, text: 'Estudar React' }
+  ]);
+
+  return (
+    <TaskContext.Provider value={tasks}>
+      <div>
+        <h1>Lista de Tarefas</h1>
+        <TaskList />
+      </div>
+    </TaskContext.Provider>
+  );
+}
+
+export default App;
